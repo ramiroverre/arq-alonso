@@ -50,8 +50,8 @@ export const copy = {
       from: "Desde",
       sqmUnit: "m²",
       gentlemenDesign: {
-        name: "The Gentlemen Design",
-        tagline: "Diseño de interiores",
+        name: "Diseño de interiores",
+        tagline: "The Gentlemen Design",
         description:
           "Un estilo de interiorismo sobrio y atemporal, con materiales nobles, paletas cálidas y atención obsesiva al detalle — la misma estética que distingue nuestra galería de renders.",
         pricingTitle: "Planes y precios",
@@ -139,8 +139,8 @@ export const copy = {
       from: "From",
       sqmUnit: "sqm",
       gentlemenDesign: {
-        name: "The Gentlemen Design",
-        tagline: "Interior design",
+        name: "Interior design",
+        tagline: "The Gentlemen Design",
         description:
           "A timeless, understated interior design style built on refined materials, warm palettes, and obsessive attention to detail — the same aesthetic that defines our render gallery.",
         pricingTitle: "Plans & pricing",
