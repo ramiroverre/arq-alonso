@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useSettings } from "../../context/SettingsContext";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { ServiceCard } from "./ServiceCard";
 import { ServiceExpansionPanel } from "./ServiceExpansionPanel";
 
 export function ServicesSection() {
   const { copy } = useSettings();
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   const [isExpanded, setIsExpanded] = useState(false);
   const [pendingCollapseScroll, setPendingCollapseScroll] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -40,6 +42,7 @@ export function ServicesSection() {
               isExpanded={isExpanded}
               onClick={toggleExpanded}
             />
+            {!isDesktop && <AnimatePresence>{isExpanded && <ServiceExpansionPanel />}</AnimatePresence>}
           </div>
 
           <ServiceCard
@@ -50,7 +53,7 @@ export function ServicesSection() {
           />
         </div>
 
-        <AnimatePresence>{isExpanded && <ServiceExpansionPanel />}</AnimatePresence>
+        {isDesktop && <AnimatePresence>{isExpanded && <ServiceExpansionPanel />}</AnimatePresence>}
       </div>
     </section>
   );
