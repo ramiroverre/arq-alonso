@@ -17,8 +17,8 @@ function App() {
       <main>
         <Hero />
         <StatsSection />
-        <GallerySection />
         <ServicesSection />
+        <GallerySection />
         <ShapesBackdrop>
           <MarqueeSection />
           <About />

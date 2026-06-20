@@ -3,8 +3,8 @@ export const copy = {
     nav: {
       links: [
         { label: "Sobre mí", href: "#about" },
-        { label: "Galería", href: "#gallery" },
         { label: "Servicios", href: "#services" },
+        { label: "Galería", href: "#gallery" },
         { label: "Contacto", href: "#contact" },
       ],
       whatsapp: "WhatsApp",
@@ -91,8 +91,8 @@ export const copy = {
     nav: {
       links: [
         { label: "About", href: "#about" },
-        { label: "Gallery", href: "#gallery" },
         { label: "Services", href: "#services" },
+        { label: "Gallery", href: "#gallery" },
         { label: "Contact", href: "#contact" },
       ],
       whatsapp: "WhatsApp",
