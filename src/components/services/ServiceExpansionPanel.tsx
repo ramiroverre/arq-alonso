@@ -1,10 +1,15 @@
 import { motion } from "framer-motion";
+import { ChevronUp } from "lucide-react";
 import { useSettings } from "../../context/SettingsContext";
 import { gentlemenDesignPricing } from "../../data/services";
 import { PricingTiers } from "./PricingTiers";
 import { ServiceGalleryTabs } from "./ServiceGalleryTabs";
 
-export function ServiceExpansionPanel() {
+interface ServiceExpansionPanelProps {
+  onCollapse: () => void;
+}
+
+export function ServiceExpansionPanel({ onCollapse }: ServiceExpansionPanelProps) {
   const { copy } = useSettings();
 
   return (
@@ -21,6 +26,16 @@ export function ServiceExpansionPanel() {
         <PricingTiers tiers={gentlemenDesignPricing} />
 
         <ServiceGalleryTabs />
+      </div>
+
+      <div className="mt-6 flex justify-center">
+        <button
+          onClick={onCollapse}
+          className="inline-flex items-center gap-2 rounded-full border border-muted/20 px-6 py-3 text-sm text-muted dark:text-muted-dark hover:border-gold dark:hover:border-gold-dark hover:text-gold dark:hover:text-gold-dark transition-colors"
+        >
+          {copy.services.collapse}
+          <ChevronUp className="w-4 h-4" />
+        </button>
       </div>
     </motion.div>
   );

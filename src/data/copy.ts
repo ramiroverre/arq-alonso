@@ -46,6 +46,7 @@ export const copy = {
       title: "Servicios",
       subtitle: "Soluciones de diseño y modelado a medida para cada etapa de tu proyecto.",
       comingSoon: "Próximamente",
+      collapse: "Mostrar menos",
       from: "Desde",
       sqmUnit: "m²",
       gentlemenDesign: {
@@ -134,6 +135,7 @@ export const copy = {
       title: "Services",
       subtitle: "Tailored design and modeling solutions for every stage of your project.",
       comingSoon: "Coming soon",
+      collapse: "Show less",
       from: "From",
       sqmUnit: "sqm",
       gentlemenDesign: {

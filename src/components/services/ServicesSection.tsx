@@ -42,7 +42,7 @@ export function ServicesSection() {
               isExpanded={isExpanded}
               onClick={toggleExpanded}
             />
-            {!isDesktop && <AnimatePresence>{isExpanded && <ServiceExpansionPanel />}</AnimatePresence>}
+            {!isDesktop && <AnimatePresence>{isExpanded && <ServiceExpansionPanel onCollapse={toggleExpanded} />}</AnimatePresence>}
           </div>
 
           <ServiceCard
@@ -53,7 +53,7 @@ export function ServicesSection() {
           />
         </div>
 
-        {isDesktop && <AnimatePresence>{isExpanded && <ServiceExpansionPanel />}</AnimatePresence>}
+        {isDesktop && <AnimatePresence>{isExpanded && <ServiceExpansionPanel onCollapse={toggleExpanded} />}</AnimatePresence>}
       </div>
     </section>
   );
