@@ -12,11 +12,14 @@ export function ServicesSection() {
   const cardRef = useRef<HTMLDivElement>(null);
 
   function toggleExpanded() {
-    // cardRef wraps only the card itself (not the panel below it), so its
-    // position never moves as the panel expands/collapses — safe to scroll
-    // to immediately instead of waiting on the collapse animation.
+    // The site sets `scroll-behavior: smooth` globally, which would race
+    // against the panel's own collapse animation if we asked for a smooth
+    // scroll here too — the two animations fight and can overshoot into the
+    // next section. Scrolling instantly, before the collapse animation even
+    // starts, avoids that entirely: the viewport snaps to the card first,
+    // then the panel just shrinks away below it.
     if (isExpanded) {
-      cardRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      cardRef.current?.scrollIntoView({ behavior: "instant", block: "start" });
     }
     setIsExpanded((prev) => !prev);
   }
