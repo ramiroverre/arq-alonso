@@ -4,6 +4,7 @@ export const copy = {
       links: [
         { label: "Sobre mí", href: "#about" },
         { label: "Galería", href: "#gallery" },
+        { label: "Servicios", href: "#services" },
         { label: "Contacto", href: "#contact" },
       ],
       whatsapp: "WhatsApp",
@@ -41,6 +42,28 @@ export const copy = {
       showMore: "Mostrar más",
       showLess: "Mostrar menos",
     },
+    services: {
+      title: "Servicios",
+      subtitle: "Soluciones de diseño y modelado a medida para cada etapa de tu proyecto.",
+      comingSoon: "Próximamente",
+      from: "Desde",
+      sqmUnit: "m²",
+      gentlemenDesign: {
+        name: "The Gentlemen Design",
+        tagline: "Diseño de interiores",
+        description:
+          "Un estilo de interiorismo sobrio y atemporal, con materiales nobles, paletas cálidas y atención obsesiva al detalle — la misma estética que distingue nuestra galería de renders.",
+        pricingTitle: "Planes y precios",
+        pricingNote: "El precio final depende de los metros cuadrados (m²) del proyecto.",
+        tierLabels: { base: "Base", premium: "Premium", elite: "Elite" },
+        galleryTitle: "Galería del estilo",
+        tabs: { living: "Living", dining: "Comedor", bedroom: "Dormitorio" },
+      },
+      bimModeler: {
+        name: "BIM modeler",
+        tagline: "Modelado BIM",
+      },
+    },
     about: {
       title: "Sobre mí",
       kicker: "Ignacio Alonso",
@@ -69,6 +92,7 @@ export const copy = {
       links: [
         { label: "About", href: "#about" },
         { label: "Gallery", href: "#gallery" },
+        { label: "Services", href: "#services" },
         { label: "Contact", href: "#contact" },
       ],
       whatsapp: "WhatsApp",
@@ -105,6 +129,28 @@ export const copy = {
       lightboxClose: "Close",
       showMore: "Show more",
       showLess: "Show less",
+    },
+    services: {
+      title: "Services",
+      subtitle: "Tailored design and modeling solutions for every stage of your project.",
+      comingSoon: "Coming soon",
+      from: "From",
+      sqmUnit: "sqm",
+      gentlemenDesign: {
+        name: "The Gentlemen Design",
+        tagline: "Interior design",
+        description:
+          "A timeless, understated interior design style built on refined materials, warm palettes, and obsessive attention to detail — the same aesthetic that defines our render gallery.",
+        pricingTitle: "Plans & pricing",
+        pricingNote: "Final price depends on the project's square meters (sqm).",
+        tierLabels: { base: "Base", premium: "Premium", elite: "Elite" },
+        galleryTitle: "Style gallery",
+        tabs: { living: "Living", dining: "Dining", bedroom: "Bedroom" },
+      },
+      bimModeler: {
+        name: "BIM modeler",
+        tagline: "BIM modeling",
+      },
     },
     about: {
       title: "About me",
