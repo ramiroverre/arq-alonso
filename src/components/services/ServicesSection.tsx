@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useSettings } from "../../context/SettingsContext";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
@@ -9,22 +9,18 @@ export function ServicesSection() {
   const { copy } = useSettings();
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const [isExpanded, setIsExpanded] = useState(false);
-  const [pendingCollapseScroll, setPendingCollapseScroll] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
   function toggleExpanded() {
-    if (isExpanded) {
-      setPendingCollapseScroll(true);
-    }
     setIsExpanded((prev) => !prev);
   }
 
-  useEffect(() => {
-    if (pendingCollapseScroll) {
-      cardRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-      setPendingCollapseScroll(false);
-    }
-  }, [pendingCollapseScroll]);
+  // Wait for the panel's exit animation to finish collapsing before scrolling,
+  // otherwise the page reflow (content shrinking) shifts the next section into
+  // view at the scroll position we just centered on.
+  function scrollToCardAfterCollapse() {
+    cardRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
 
   return (
     <section id="services" className="px-6 pt-8 sm:pt-10 pb-20 sm:pb-28">
@@ -42,7 +38,11 @@ export function ServicesSection() {
               isExpanded={isExpanded}
               onClick={toggleExpanded}
             />
-            {!isDesktop && <AnimatePresence>{isExpanded && <ServiceExpansionPanel onCollapse={toggleExpanded} />}</AnimatePresence>}
+            {!isDesktop && (
+              <AnimatePresence onExitComplete={scrollToCardAfterCollapse}>
+                {isExpanded && <ServiceExpansionPanel onCollapse={toggleExpanded} />}
+              </AnimatePresence>
+            )}
           </div>
 
           <ServiceCard
@@ -53,7 +53,11 @@ export function ServicesSection() {
           />
         </div>
 
-        {isDesktop && <AnimatePresence>{isExpanded && <ServiceExpansionPanel onCollapse={toggleExpanded} />}</AnimatePresence>}
+        {isDesktop && (
+          <AnimatePresence onExitComplete={scrollToCardAfterCollapse}>
+            {isExpanded && <ServiceExpansionPanel onCollapse={toggleExpanded} />}
+          </AnimatePresence>
+        )}
       </div>
     </section>
   );
