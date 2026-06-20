@@ -12,14 +12,13 @@ export function ServicesSection() {
   const cardRef = useRef<HTMLDivElement>(null);
 
   function toggleExpanded() {
+    // cardRef wraps only the card itself (not the panel below it), so its
+    // position never moves as the panel expands/collapses — safe to scroll
+    // to immediately instead of waiting on the collapse animation.
+    if (isExpanded) {
+      cardRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
     setIsExpanded((prev) => !prev);
-  }
-
-  // Wait for the panel's exit animation to finish collapsing before scrolling,
-  // otherwise the page reflow (content shrinking) shifts the next section into
-  // view at the scroll position we just centered on.
-  function scrollToCardAfterCollapse() {
-    cardRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
   return (
@@ -31,15 +30,17 @@ export function ServicesSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div ref={cardRef}>
-            <ServiceCard
-              name={copy.services.gentlemenDesign.name}
-              tagline={copy.services.gentlemenDesign.tagline}
-              isExpanded={isExpanded}
-              onClick={toggleExpanded}
-            />
+          <div>
+            <div ref={cardRef}>
+              <ServiceCard
+                name={copy.services.gentlemenDesign.name}
+                tagline={copy.services.gentlemenDesign.tagline}
+                isExpanded={isExpanded}
+                onClick={toggleExpanded}
+              />
+            </div>
             {!isDesktop && (
-              <AnimatePresence onExitComplete={scrollToCardAfterCollapse}>
+              <AnimatePresence>
                 {isExpanded && <ServiceExpansionPanel onCollapse={toggleExpanded} />}
               </AnimatePresence>
             )}
@@ -54,7 +55,7 @@ export function ServicesSection() {
         </div>
 
         {isDesktop && (
-          <AnimatePresence onExitComplete={scrollToCardAfterCollapse}>
+          <AnimatePresence>
             {isExpanded && <ServiceExpansionPanel onCollapse={toggleExpanded} />}
           </AnimatePresence>
         )}
